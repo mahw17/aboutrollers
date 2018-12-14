@@ -1,10 +1,10 @@
 Weather
 ==================================
 [![Build Status](https://travis-ci.com/mahw17/aboutrollers.svg?branch=master)](https://travis-ci.com/mahw17/aboutrollers)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mahw17/weather/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mahw17/weather/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/mahw17/weather/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mahw17/weather/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/mahw17/weather/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mahw17/weather/build-status/master)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/mahw17/weather/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mahw17/aboutrollers/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mahw17/aboutrollers/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/mahw17/aboutrollers/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mahw17/aboutrollers/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/mahw17/aboutrollers/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mahw17/aboutrollers/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/mahw17/aboutrollers/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 Table of content
 ------------------------------------
