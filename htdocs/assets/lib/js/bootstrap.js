@@ -1197,8 +1197,8 @@
             break
         }
 
-        this.applyPlacement(tp, placement)
-        this.$element.trigger('shown')
+        // this.applyPlacement(tp, placement)
+        // this.$element.trigger('shown')
       }
     }
 
