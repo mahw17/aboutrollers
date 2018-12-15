@@ -21,7 +21,6 @@ class UserController implements ContainerInjectableInterface
     /**
      * Description.
      *
-     * @param datatype $variable Description
      *
      * @throws Exception
      *
@@ -139,7 +138,7 @@ class UserController implements ContainerInjectableInterface
     /**
      * Logout process page.
      */
-    public function logoutAction() : object
+    public function logoutAction() : null
     {
         // Load framework services
         $response   = $this->di->get("response");
