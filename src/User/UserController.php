@@ -4,91 +4,151 @@ namespace Mahw17\User;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
+use Mahw17\User\HTMLForm\UserLoginForm;
+use Mahw17\User\HTMLForm\CreateUserForm;
+
+// use Anax\Route\Exception\ForbiddenException;
+// use Anax\Route\Exception\NotFoundException;
+// use Anax\Route\Exception\InternalErrorException;
 
 /**
- * Controller to handle user login.
+ * A sample controller to show how a controller class can be implemented.
  */
 class UserController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
     /**
-     * @var array $layout to hold a special login layout.
+     * Description.
+     *
+     * @param datatype $variable Description
+     *
+     * @throws Exception
+     *
+     * @return object as a response object
      */
-    private $layout = [
-        "region" => "layout",
-        "template" => "mahw17/layout/login",
-        "data" => [
-            "favicon" => "assets/lib/ico/favicon.ico",
-            "javascripts" => []
-            ]
+    public function indexActionGet() : object
+    {
+        // Set navbar active
+        $session = $this->di->get("session");
+        $session->set('navbar', 'user');
+
+        // Load framework services
+        $page = $this->di->get("page");
+
+        // Collect data
+        $data = [
+            "title"         => "Användare | Startsida",
+            "navbar"        => 'user',
+            "intro_mount"   => 'Användare',
+            "intro_path"    => 'Startsida',
+            "content" => "An index page",
         ];
+
+        // Add and render views
+        $page->add("mahw17/intro/subintro", $data, "subintro");
+        $page->add("anax/v2/article/default", $data, "main");
+
+        return $page->render($data);
+    }
+
+
 
     /**
-     * Display the about page.
+     * Description.
      *
-     * @return object
+     * @param datatype $variable Description
+     *
+     * @throws Exception
+     *
+     * @return object as a response object
      */
-    public function loginActionGet() : object
+    public function loginAction() : object
     {
+        // Set navbar active
+        $session = $this->di->get("session");
+        $session->set('navbar', 'user');
+
+        // Load framework services
+        $page = $this->di->get("page");
+
+        // Create new form and validate
+        $form = new UserLoginForm($this->di);
+        $form->check();
+
+        // Collect data
         $data = [
-            "title"  => "Login | ramverk1",
-            "layout" => "mahw17/layout/login",
-            "navbar" => 'login'
+            "title"         => "Användare | Logga in",
+            "navbar"        => 'user',
+            "intro_mount"   => 'Användare',
+            "intro_path"    => 'Logga in',
+            "content" => $form->getHTML(),
         ];
 
+        // Add and render views
+        $page->add("mahw17/intro/subintro", $data, "subintro");
+        $page->add("anax/v2/article/default", $data, "main");
+
+        return $page->render($data);
+    }
+
+
+
+    /**
+     * Description.
+     *
+     * @param datatype $variable Description
+     *
+     * @throws Exception
+     *
+     * @return object as a response object
+     */
+    public function createAction() : object
+    {
+        // Set navbar active
+        $session = $this->di->get("session");
+        $session->set('navbar', 'user');
+
+        // Load framework services
         $page = $this->di->get("page");
-        $page->addLayout($this->layout, $data, "layout");
-        $page->add("mahw17/users/login", $data);
+
+        // Create new form and validate
+        $form = new CreateUserForm($this->di);
+
+        if ($form->check()) {
+            // If user added successfully redirect to login page
+            $this->di->get("response")->redirect("user/login");
+        }
+
+        // Collect data
+        $data = [
+            "title"         => "Användare | Skapa konto",
+            "navbar"        => 'user',
+            "intro_mount"   => 'Användare',
+            "intro_path"    => 'Skapa konto',
+            "content" => $form->getHTML(),
+        ];
+
+        // Add and render views
+        $page->add("mahw17/intro/subintro", $data, "subintro");
+        $page->add("anax/v2/article/default", $data, "main");
 
         return $page->render($data);
     }
 
     /**
-     * User verification.
-     *
-     */
-    public function loginActionPost()
-    {
-        // Load framework services
-        $request    = $this->di->get("request");
-        $response   = $this->di->get("response");
-
-        // Get username and password
-        $user     = $request->getPost('user', null);
-        $password = $request->getPost('password', null);
-
-        // Verify user
-        $userIdentification = new User();
-        $userIdentification->setDI($this->di);
-        $userIdentification->getUsers();
-        $success  = $userIdentification->loginUser($user, $password);
-
-        // Redirect
-        if ($success === true) {
-            $response->redirect("");
-            return true;
-        } else {
-            $response->redirect("user/login");
-            return false;
-        }
-    }
-
-    /**
      * Logout process page.
      */
-    public function logoutActionGet()
+    public function logoutAction() : object
     {
         // Load framework services
         $response   = $this->di->get("response");
+        $session    = $this->di->get("session");
 
         // User logout
-        $userIdentification = new User();
-        $userIdentification->setDI($this->di);
-        $userIdentification->logoutUser();
+        $session->delete("user");
 
         // Redirect
         $response->redirect("");
-        return true;
     }
 }

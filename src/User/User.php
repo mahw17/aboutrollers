@@ -2,123 +2,55 @@
 
 namespace Mahw17\User;
 
-use Anax\Commons\ContainerInjectableInterface;
-use Anax\Commons\ContainerInjectableTrait;
+use Anax\DatabaseActiveRecord\ActiveRecordModel;
 
 /**
- * User authentication methods
+ * A database driven model.
  */
-class User implements ContainerInjectableInterface
+class User extends ActiveRecordModel
 {
-    use ContainerInjectableTrait;
-
 
     /**
-     *
-     * @var array $users Valid users
-     *
+     * @var string $tableName name of the database table.
      */
-    private $users = [];
-
+    protected $tableName = "User";
 
     /**
-     * Fetch user information from db and create private key value array
+     * Columns in the table.
      *
-     *
+     * @var integer $id primary key auto incremented.
      */
-    public function getUsers()
+    public $id;
+    public $email;
+    public $acronym;
+    public $password;
+    public $rank;
+    public $gravatar;
+
+    /**
+     * Set the password.
+     *
+     * @param string $password the password to use.
+     *
+     * @return void
+     */
+    public function setPassword($password)
     {
-        // Load framework services
-        $db = $this->di->get("db");
-
-        $db->connect();
-
-        $sql = "SELECT * FROM users;";
-        $res = $db->executeFetchAll($sql);
-
-        foreach ($res as $user) {
-            $this->users[$user->user] = [
-                    'name' => $user->name,
-                    'password' => $user->password
-            ];
-        }
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 
     /**
-    * Login user and set session if user and password matches.
-    *
-    * @param $user     the supplied acronym of the user.
-    * @param $password the supplied pasword of the user
-    *
-    * @return boolean true if user and password matches, else false.
-    */
-    public function loginUser($user, $password)
+     * Verify the acronym and the password, if successful the object contains
+     * all details from the database row.
+     *
+     * @param string $acronym  acronym to check.
+     * @param string $password the password to use.
+     *
+     * @return boolean true if acronym and password matches, else false.
+     */
+    public function verifyPassword($acronym, $password)
     {
-        $res = $this->checkuserAndPassword($user, $password);
-
-        if ($res === true) {
-            // Set a value in the session, associated with a key.
-            $this->di->get('session')->set("user", $user);
-        }
-
-        return $res;
-    }
-
-     /**
-      * Check if the user can login with supplied credentials.
-      *
-      * @param $user     the supplied acronym of the user.
-      * @param $password the supplied password of the user
-      *
-      * @return boolean true if user and password matches, else false.
-      */
-    public function checkUserAndPassword($user, $password)
-    {
-        $passwordHash = array_key_exists($user, $this->users)
-            ? $this->users[$user]['password']
-            : false;
-
-        $res = $password == $passwordHash ? true : false;
-        return $res;
-    }
-
-
-
-
-     /**
-      * Get details of the logged in user, or false if user is not logged in.
-      *
-      * @return []|boolean array with details or false if user is not logged in.
-      */
-    public function getLoggedInUser()
-    {
-        // Load framework services
-        $session = $this->di->get("session");
-
-        $user = $session->has("user") //isset($_SESSION['user'])
-            ? $session->get("user") //$_SESSION['user']
-            : false;
-
-        if ($user === false) {
-            return false;
-        }
-
-        $res['user'] = $user;
-        $res['name'] = $this->users[$user]['name'];
-        $res['password'] = $this->users[$user]['password'];
-
-        return $res;
-    }
-
-
-     /**
-      * Logout user and remove details from the session.
-      *
-      * @return void.
-      */
-    public function logoutUser()
-    {
-        $this->di->get('session')->delete("user");
-        return true;
+        $this->find("acronym", $acronym);
+        return password_verify($password, $this->password);
     }
 }

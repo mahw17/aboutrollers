@@ -23,21 +23,14 @@ SET NAMES utf8;
 
 
 --
--- Table Book
+-- Table User
 --
-DROP TABLE IF EXISTS Book;
-CREATE TABLE Book (
+DROP TABLE IF EXISTS User;
+CREATE TABLE User (
     `id` INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    `title` VARCHAR(256) NOT NULL,
-    `author` VARCHAR(256) NOT NULL,
-    `image` VARCHAR(256) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `acronym` VARCHAR(80) UNIQUE NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `rank` INTEGER,
+    `gravatar` VARCHAR(255) NOT NULL
 ) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
-
--- Table users
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user` varchar(50) COLLATE utf8_swedish_ci NOT NULL,
-  `password` varchar(10) COLLATE utf8_swedish_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8_swedish_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci

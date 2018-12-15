@@ -1,14 +1,13 @@
 <?php
 /**
- * Load the user controller.
+ * Mount the controller onto a mountpoint.
  */
 return [
-
     "routes" => [
         [
-            "info" => "Validate User.",
+            "info" => "User controller.",
             "mount" => "user",
             "handler" => "\Mahw17\User\UserController",
-        ]
+        ],
     ]
 ];
