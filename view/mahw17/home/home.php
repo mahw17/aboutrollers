@@ -25,18 +25,13 @@ namespace Anax\View;
                       <div class="widget">
                         <h4 class="rheading">Senaste frågorna<span></span></h4>
                         <ul class="recent-posts">
-                          <li><a href="#">Hur mycket väger en vält??</a>
-                            <div class="clear">
-                            </div>
-                            <span class="date"><i class="icon-calendar"></i> 14 December, 2018</span>
-                            <span class="comment"><i class="icon-comment"></i> 1 Svar | 4 Kommentarer</span>
-                          </li>
-                          <li><a href="#">Vad används en vält till?</a>
-                            <div class="clear">
-                            </div>
-                            <span class="date"><i class="icon-calendar"></i> 6 December, 2018</span>
-                            <span class="comment"><i class="icon-comment"></i> 2 Kommentarer</span>
-                          </li>
+                            <?php foreach ($questions as $question): ?>
+                                <li>
+                                    <a href="<?= url("question/view/{$question->id}"); ?>"><?= $question->body ?></a>
+                                    <div class="clear"></div>
+                                    <span class="date"><i class="icon-calendar"></i> <?= $question->created ?></span>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                       </div>
                     </aside>
@@ -47,9 +42,12 @@ namespace Anax\View;
                       <div class="widget">
                         <h4 class="rheading">Populäraste taggarna<span></span></h4>
                         <ul class="recent-posts">
-                          <li><a href="#" class="btn btn-theme">Jordpackning</a></li>
-                          <li><a href="#" class="btn btn-theme">Asfalt</a></li>
-                          <li><a href="#" class="btn btn-theme">Maskininfo</a></li>
+                            <?php foreach ($tags as $tag): ?>
+                                <li>
+                                    <a href="<?= url("tag") ?>" class="btn btn-theme"><?= $tag->Tag ?> (<?= $tag->Qty ?>)</a>
+                                </li>
+                            <?php endforeach; ?>
+
                         </ul>
                       </div>
                     </aside>
@@ -59,21 +57,13 @@ namespace Anax\View;
                       <div class="widget">
                         <h4 class="rheading">Aktivaste användare<span></span></h4>
                         <ul class="recent-posts">
-                          <li><a href="#">Marcus Holmersson</a>
-                            <div class="clear">
-                            </div>
-                            <span class="date"><i class="icon-thumbs-up"></i> 6</span>
-                          </li>
-                          <li><a href="#">Göran Göransson</a>
-                            <div class="clear">
-                            </div>
-                            <span class="date"><i class="icon-thumbs-up"></i> 5</span>
-                          </li>
-                          <li><a href="#">Lars Larsson</a>
-                            <div class="clear">
-                            </div>
-                            <span class="date"><i class="icon-thumbs-up"></i> 1</span>
-                          </li>
+                            <?php foreach ($users as $user): ?>
+                                <li>
+                                    <a href="<?= url("user/view/{$user->id}"); ?>"><?= $user->acronym ?></a>
+                                    <div class="clear"></div>
+                                    <span class="date"><i class="icon-thumbs-up"></i> <?= $user->rank ?></span>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                       </div>
                     </aside>

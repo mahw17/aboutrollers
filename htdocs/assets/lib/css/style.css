@@ -29,6 +29,41 @@ div.weather_radio {
 	margin-bottom: 2rem;
 }
 
+.btn-answer {
+	float: right;
+}
+
+h2.question {
+	margin-bottom: 10rem;
+}
+
+.questionTitle {
+	width: 75%;
+	float: left;
+}
+
+.questionTitle h1 {
+	margin-bottom: 3rem;
+}
+
+.questionTitle h2 {
+	margin-bottom: 5rem;
+}
+
+.questionTitle h4 {
+	margin-bottom: 8rem;
+}
+
+.questionGravatar {
+	width: 25%;
+	float: right;
+	text-align: right;
+}
+
+.questionDate {
+	width: 100%;
+	text-align: right;
+}
 /* ====================================== */
 
 .clear { clear:both; }

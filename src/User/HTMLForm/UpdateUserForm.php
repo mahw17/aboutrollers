@@ -9,32 +9,42 @@ use Mahw17\User\User;
 /**
  * Example of FormModel implementation.
  */
-class CreateUserForm extends FormModel
+class UpdateUserForm extends FormModel
 {
     /**
      * Constructor injects with DI container.
      *
      * @param \Psr\Container\ContainerInterface $di a service container
      */
-    public function __construct(ContainerInterface $di)
+    public function __construct(ContainerInterface $di, $id)
     {
         parent::__construct($di);
+        $user = $this->getItemDetails($id);
         $this->form->create(
             [
                 "id" => __CLASS__,
-                "legend" => "Skapa konto",
+                // "legend" => "Uppdatera konto",
             ],
             [
+                "id" => [
+                    "label"       => "ID",
+                    "type" => "text",
+                    "validation" => ["not_empty"],
+                    "readonly" => true,
+                    "value" => $user->id,
+                ],
                 "acronym" => [
                     "label"       => "Namn",
-                    "type"        => "text",
+                    "type" => "text",
                     "validation" => ["not_empty"],
+                    "value" => $user->acronym,
                 ],
 
                 "email" => [
                     "label"       => "E-post",
                     "type"        => "email",
                     "validation" => ["not_empty"],
+                    "value" => $user->email,
                 ],
 
                 "password" => [
@@ -53,13 +63,27 @@ class CreateUserForm extends FormModel
 
                 "submit" => [
                     "type" => "submit",
-                    "value" => "Skapa användare",
+                    "value" => "Uppdatera användare",
                     "callback" => [$this, "callbackSubmit"]
                 ],
             ]
         );
     }
 
+    /**
+     * Get details on item to load form with.
+     *
+     * @param integer $id get details on item with id.
+     *
+     * @return Question
+     */
+    public function getItemDetails($id) : object
+    {
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
+        $user->find("id", $id);
+        return $user;
+    }
 
 
     /**
@@ -70,32 +94,32 @@ class CreateUserForm extends FormModel
      */
     public function callbackSubmit()
     {
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
+        $user->find("id", $this->form->value("id"));
+
+
         // Get values from the submitted form
-        $acronym       = $this->form->value("acronym");
-        $email         = $this->form->value("email");
+        $user->acronym       = $this->form->value("acronym");
+        $user->email         = $this->form->value("email");
+
+        // Check password matches
         $password      = $this->form->value("password");
         $passwordAgain = $this->form->value("password-again");
 
-        // Check password matches
         if ($password !== $passwordAgain) {
             $this->form->rememberValues();
             $this->form->addOutput("Password did not match.");
             return false;
         }
 
-        // Creating the Gravatar - Hash
-        $gravatar = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($email))) . "?d=robohash";
+        $user->setPassword($this->form->value("password"));
 
-        // Use active record to save new user to database
-        $user = new User();
-        $user->setDb($this->di->get("dbqb"));
-        $user->acronym = $acronym;
-        $user->email = $email;
-        $user->gravatar = $gravatar;
-        $user->rank = 0;
-        $user->setPassword($password);
+        // Creating the Gravatar - Hash
+        $user->gravatar = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($user->email))) . "?d=robohash";
         $user->save();
 
+        $this->form->addOutput("Användare " . $user->acronym . " är nu uppdaterad.");
         return true;
     }
 }

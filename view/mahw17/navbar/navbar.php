@@ -4,7 +4,6 @@ namespace Anax\View;
 
 use Mahw17\User\User;
 
-
 /**
  * Template file to render a view.
  */
@@ -17,9 +16,10 @@ $navbar     = $session->get('navbar', 'home');
 $login      =  false;
 if ($session->has('user', false)) {
     $login = true;
+    $userid = $session->get('user');
     $user = new User();
     $user->setDb($this->di->get("dbqb"));
-    $user->findById($session->get('user'));
+    $user->findById($userid);
     $gravatar = $user->gravatar;
 }
 
@@ -34,25 +34,29 @@ if ($session->has('user', false)) {
             <a href="<?= url("question") ?>"><i class="icon-question-sign"></i> Frågor </a>
         </li>
         <li class ="<?= $navbar == 'tags' ? 'active' : ''; ?>">
-            <a href="<?= url("tags") ?>"><i class="icon-tags"></i> Taggar </a>
+            <a href="<?= url("tag") ?>"><i class="icon-tags"></i> Taggar </a>
         </li>
         <li class ="<?= $navbar == 'about' ? 'active' : ''; ?>">
             <a href="<?= url("about") ?>"><i class="icon-info-sign"></i> Om </a>
         </li>
-        <li class="dropdown <?= $navbar == 'login' ? 'active' : ''; ?>">
 
-        <?php if($login): ?>
-            <a href="#"><img class="gravatar" src="<?= $gravatar ?>" alt="" /></a>
+        <li class="dropdown <?= $navbar == 'login' ? 'active' : ''; ?>">
+        <?php if ($login) : ?>
+            <a href="<?= url("user") ?>"><img class="gravatar" src="<?= $gravatar ?>" alt="" /></a>
             <ul class="dropdown-menu gravatar1">
                 <li><a href="<?= url("user/logout") ?>">Logga ut</a></li>
+                <li><a href="<?= url("user/update/" . $userid) ?>">Uppdatera konto</a></li>
+                <li><a href="<?= url("user") ?>">Visa alla</a></li>
             </ul>
-        <?php else: ?>
-          <a href="#"><i class="icon-user"></i></a>
+        <?php else : ?>
+          <a href="<?= url("user") ?>"><i class="icon-user"></i></a>
           <ul class="dropdown-menu">
               <li><a href="<?= url("user/login") ?>">Logga in</a></li>
               <li><a href="<?= url("user/create") ?>">Skapa konto</a></li>
+              <li><a href="<?= url("user") ?>">Visa alla</a></li>
           </ul>
-      <?php endif ?>
+        <?php endif ?>
         </li>
+
       </ul>
 </nav>

@@ -40,16 +40,18 @@ $text = isset($text) ? $text : $content;
         <?= $text ?>
     <?php endif; ?>
 
-    <?php if (isset($links)) :
+    <?php if (isset($links)) {
         renderView(__DIR__ . "/../link-list/default", [
             "links" => $links
         ]);
-    endif; ?>
+}
+    ?>
 
-    <?php if (isset($toc)) :
+    <?php if (isset($toc)) {
         renderView(__DIR__ . "/../toc-list/default", [
             "toc" => $toc
         ]);
-    endif; ?>
+}
+    ?>
 
 </div>

@@ -53,4 +53,66 @@ class User extends ActiveRecordModel
         $this->find("acronym", $acronym);
         return password_verify($password, $this->password);
     }
+
+    /**
+     * Verify the acronym and the password, if successful the object contains
+     * all details from the database row.
+     *
+     * @param integer $id  user to be updated.
+     * @param integer $sessionId activeUser.
+     *
+     * @return boolean true if id and sessionId matches, else false.
+     */
+    public function verifyUser($id, $sessionId)
+    {
+        return $id === $sessionId;
+    }
+
+    /**
+     * Update user rank
+     *
+     * @param integer $id  user id to be updated.
+     * @param integer $points points to add to user rank.
+     *
+     */
+    public function updateRank($id, $points)
+    {
+        $this->find("id", $id);
+        $this->rank = $this->rank + $points;
+        $this->save();
+    }
+
+    /**
+     * Get details on item to load form with.
+     *
+     * @param integer $id get details on item with id.
+     *
+     * @return Question
+     */
+    public function getItemDetails($id) : object
+    {
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
+        $user->find("id", $id);
+        return $user;
+    }
+
+    /**
+     * Get details on item to load form with.
+     *
+     *
+     * @return array
+     */
+    public function getActiveUsers($limit = 3)
+    {
+        $res = $this->db->connect()
+                        ->select("id, acronym, rank")
+                        ->from("User")
+                        ->orderBy("rank DESC")
+                        ->limit($limit)
+                        ->execute()
+                        ->fetchAll();
+
+        return $res;
+    }
 }

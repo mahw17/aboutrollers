@@ -4,6 +4,9 @@ namespace Mahw17\Controller;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
+use Mahw17\Question\Question;
+use Mahw17\Tag\Tag;
+use Mahw17\User\User;
 
 /**
  * Controller to hanle the About request
@@ -24,11 +27,28 @@ class HomeController implements ContainerInjectableInterface
         $session = $this->di->get("session");
         $session->set('navbar', 'home');
 
+        // Collect Data
+
+        // Questions
+        $question = new Question();
+        $question->setDb($this->di->get("dbqb"));
+
+        // Tags
+        $tag = new Tag();
+        $tag->setDb($this->di->get("dbqb"));
+
+        // Users
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
+
         $data = [
             "title"         => "Hem | allt om vältar",
             "navbar"        => 'home',
             "intro_mount"   => 'Allt om vältar',
-            "intro_path"    => 'Hem'
+            "intro_path"    => 'Hem',
+            "questions"     => $question->getLatestQuestions(),
+            "tags"          => $tag->getPopularTags(),
+            "users"         => $user->getActiveUsers()
         ];
 
         $page = $this->di->get("page");

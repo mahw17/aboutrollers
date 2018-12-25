@@ -112,7 +112,7 @@ namespace Anax\View;
       <div class="container">
           <div class="row">
               <div class="span4">
-                  <?php renderRegion("sidebar") ?>
+                    <?php renderRegion("sidebar") ?>
               </div>
               <div class="span8">
                 <!-- start article full post -->

@@ -37,14 +37,15 @@ return [
                 ]
             ],
             "stylesheets" => [
-                "assets/lib/css/bootstrap.css",
                 // "assets/lib/css/bootstrap-responsive.css",
                 // "assets/lib/css/prettyPhoto.css",
                 // "assets/lib/js/google-code-prettify/prettify.css",
                 // "assets/lib/css/flexslider.css",
+                "assets/lib/css/bootstrap.css",
                 "assets/lib/css/style.css",
                 "assets/lib/color/default.css",
                 "https://fonts.googleapis.com/css?family=Droid+Serif:400,600,400italic|Open+Sans:400,600,700"
+                // "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
             ],
             "javascripts" => [
                 "assets/lib/js/jquery.js",
