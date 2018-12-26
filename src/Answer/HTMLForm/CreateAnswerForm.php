@@ -3,6 +3,7 @@
 namespace Mahw17\Answer\HTMLForm;
 
 use Anax\HTMLForm\FormModel;
+use Anax\TextFilter\TextFilter;
 use Psr\Container\ContainerInterface;
 use Mahw17\Answer\Answer;
 use Mahw17\Question\Question;
@@ -79,8 +80,11 @@ class CreateAnswerForm extends FormModel
     {
         $answer = new Answer();
         $answer->setDb($this->di->get("dbqb"));
+
+        $filter = new TextFilter();
+
         $answer->title  = $this->form->value("title");
-        $answer->body = $this->form->value("body");
+        $answer->body = $filter->doFilter($this->form->value("body"),"markdown");
         $answer->questionid = $this->form->value("questionid");
         $answer->userid = $this->form->value("userid");
         $answer->save();
@@ -90,6 +94,20 @@ class CreateAnswerForm extends FormModel
         $user->setDb($this->di->get("dbqb"));
         $user->updateRank($answer->userid, 3);
 
-        $this->form->addOutput("Svaret är registrerat.");
+        return true;
+
+        // $this->form->addOutput("Svaret är registrerat.");
     }
+
+    /**
+     * Callback what to do if the form was successfully submitted, this
+     * happen when the submit callback method returns true. This method
+     * can/should be implemented by the subclass for a different behaviour.
+     */
+    public function callbackSuccess()
+    {
+        $this->di->get("response")->redirect("question")->send();
+    }
+
+
 }

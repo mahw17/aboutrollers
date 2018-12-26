@@ -86,6 +86,9 @@ class QuestionController implements ContainerInjectableInterface
         $page = $this->di->get("page");
         $session = $this->di->get("session");
 
+        // Active user id
+        $userid = $session->get("user", false);
+
         // Collect data
         $form = new CreateForm($this->di, $userid);
         $form->check();
@@ -130,18 +133,17 @@ class QuestionController implements ContainerInjectableInterface
             $question->setDb($this->di->get("dbqb"));
             $questionInfo = $question->getQuestionDetails($questionid);
 
-            // Answer Info
-            $answer = new Answer();
-            $answer->setDb($this->di->get("dbqb"));
-            $answerInfo = $answer->getAnswerDetails($questionid);
-
-            // Comment Info
-            $comment = new Comment();
-            $comment->setDb($this->di->get("dbqb"));
+                // Comment Info
+                $comment = new Comment();
+                $comment->setDb($this->di->get("dbqb"));
 
                 // Question comments
                 $qComments = $comment->getComments('q', $questionid);
 
+            // Answer Info (and answer comments)
+            $answer = new Answer();
+            $answer->setDb($this->di->get("dbqb"));
+            $answerInfo = $answer->getAnswerDetails($questionid);
 
         $data = [
             "title"         => "Frågor",

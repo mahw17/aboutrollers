@@ -7,6 +7,9 @@ use Anax\Commons\ContainerInjectableTrait;
 use Mahw17\User\HTMLForm\UserLoginForm;
 use Mahw17\User\HTMLForm\CreateUserForm;
 use Mahw17\User\HTMLForm\UpdateUserForm;
+use Mahw17\Question\Question;
+use Mahw17\Answer\Answer;
+
 
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
@@ -231,20 +234,26 @@ class UserController implements ContainerInjectableInterface
         $page = $this->di->get("page");
         $dbqb = $this->di->get("dbqb");
 
+        // Collect data
         $user = new User();
         $user->setDb($dbqb);
         $user->find("id", $id);
 
-        // Collect data
-        // $form = new UpdateForm($this->di, $id);
-        // $form->check();
+        $question = new Question();
+        $question->setDb($dbqb);
+
+        $answer = new Answer();
+        $answer->setDb($dbqb);
+        // $answer->findWhere("userid", $id);
 
         $data = [
             "title"         => "Frågor",
             "navbar"        => 'question',
             "intro_mount"   => 'Frågor',
             "intro_path"    => 'Visa',
-            "user"          => $user
+            "user"          => $user,
+            "questions"     => $question->findAllWhere("userid = ?", $id),
+            "answers"       => $answer->findAllWhere("userid = ?", $id)
         ];
 
         // Add and render views

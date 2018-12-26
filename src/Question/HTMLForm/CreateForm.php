@@ -3,9 +3,11 @@
 namespace Mahw17\Question\HTMLForm;
 
 use Anax\HTMLForm\FormModel;
+use Anax\TextFilter\TextFilter;
 use Psr\Container\ContainerInterface;
 use Mahw17\Question\Question;
 use Mahw17\Tag\Tag;
+use Mahw17\User\User;
 
 /**
  * Form to create an item.
@@ -70,8 +72,11 @@ class CreateForm extends FormModel
     {
         $question = new Question();
         $question->setDb($this->di->get("dbqb"));
+
+        $filter = new TextFilter();
+
         $question->title  = $this->form->value("title");
-        $question->body = $this->form->value("body");
+        $question->body = $filter->doFilter($this->form->value("body"),"markdown");
         $question->userid = $this->form->value("userid");
 
         // Tag handler

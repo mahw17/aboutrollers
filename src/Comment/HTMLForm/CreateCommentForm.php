@@ -3,8 +3,10 @@
 namespace Mahw17\Comment\HTMLForm;
 
 use Anax\HTMLForm\FormModel;
+use Anax\TextFilter\TextFilter;
 use Psr\Container\ContainerInterface;
 use Mahw17\Comment\Comment;
+use Mahw17\User\User;
 
 /**
  * Example of FormModel implementation.
@@ -68,7 +70,10 @@ class CreateCommentForm extends FormModel
     {
         $comment = new Comment();
         $comment->setDb($this->di->get("dbqb"));
-        $comment->body = $this->form->value("body");
+
+        $filter = new TextFilter();
+
+        $comment->body = $filter->doFilter($this->form->value("body"),"markdown");
         $comment->source = $this->form->value("source");
         $comment->sourceid = $this->form->value("sourceid");
         $comment->userid = $this->form->value("userid");
@@ -79,6 +84,18 @@ class CreateCommentForm extends FormModel
         $user->setDb($this->di->get("dbqb"));
         $user->updateRank($comment->userid, 1);
 
-        $this->form->addOutput("Kommentaren är registrerat.");
+        return true;
+        // $this->form->addOutput("Kommentaren är registrerat.");
     }
+
+    /**
+     * Callback what to do if the form was successfully submitted, this
+     * happen when the submit callback method returns true. This method
+     * can/should be implemented by the subclass for a different behaviour.
+     */
+    public function callbackSuccess()
+    {
+        $this->di->get("response")->redirect("question")->send();
+    }
+
 }

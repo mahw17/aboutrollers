@@ -52,6 +52,24 @@ class Question extends ActiveRecordModel
      *
      * @return array
      */
+    public function getUserQuestions($userid)
+    {
+        $res = $this->db->connect()
+                        ->select("*")
+                        ->from("Question")
+                        // ->where("Question.userid = {$userid}")
+                        ->execute()
+                        ->fetchAll();
+
+        return $res;
+    }
+
+    /**
+     * Get details on item to load form with.
+     *
+     *
+     * @return array
+     */
     public function getQuestionDetailsAll()
     {
         $res = $this->db->connect()
