@@ -33,7 +33,11 @@ div.weather_radio {
 	float: right;
 }
 
-h2.question {
+h3.question {
+	margin-bottom: 10rem;
+}
+
+h4.question {
 	margin-bottom: 10rem;
 }
 
@@ -50,8 +54,8 @@ h2.question {
 	margin-bottom: 5rem;
 }
 
-.questionTitle h4 {
-	margin-bottom: 8rem;
+.questionTitle h6 {
+	margin-bottom: 7rem;
 }
 
 .questionGravatar {
@@ -63,6 +67,10 @@ h2.question {
 .questionDate {
 	width: 100%;
 	text-align: right;
+}
+
+.recent-posts p {
+	text-align: left;
 }
 /* ====================================== */
 

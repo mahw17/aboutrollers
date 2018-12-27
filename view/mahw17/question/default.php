@@ -26,12 +26,12 @@ $urlToTags = url("tag");
                 </div>
             </div>
             <div class="panel-body">
-                <h2 class="question"><?= $question->qBody ?></h2>
+                <h3 class="question"><?= $question->qBody ?></h3>
                 <!-- Comments -->
                 <?php foreach ($qComments as $comment) : ?>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="questionTitle"><h4><?= $comment->qCommentBody ?></h4></div>
+                            <div class="questionTitle"><h6><?= $comment->qCommentBody ?></h6></div>
                             <div class="questionGravatar"><a href="<?= asset("user/view/{$comment->uId}") ?>"><img class="gravatar" src="<?= $comment->uGravatar ?>" alt="" /></a></div>
                             <div class="questionDate">
                                 <p><?= $comment->qCommentCreated ?></p>
@@ -74,13 +74,13 @@ $urlToTags = url("tag");
             </div>
 
             <div class="panel-body">
-                <h3 class="question"><?= $answer->aBody ?></h3>
+                <h4 class="question"><?= $answer->aBody ?></h4>
 
                 <!-- Comments -->
                 <?php foreach ($answer->aComments as $comment) : ?>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="questionTitle"><h4><?= $comment->qCommentBody ?></h4></div>
+                            <div class="questionTitle"><h6><?= $comment->qCommentBody ?></h6></div>
                             <div class="questionGravatar"><a href="<?= asset("user/view/{$comment->uId}") ?>"><img class="gravatar" src="<?= $comment->uGravatar ?>" alt="" /></a></div>
                             <div class="questionDate">
                                 <p><?= $comment->qCommentCreated ?></p>
