@@ -38,7 +38,7 @@ class CreateAnswerForm extends FormModel
                 "title" => [
                     "label" => "Titel",
                     "type" => "text",
-                    "value" => "SV: " . $question->title,
+                    "value" => "SV: " . html_entity_decode($question->title),
                     "readonly" => true,
                     "validation" => ["not_empty"],
                 ],
