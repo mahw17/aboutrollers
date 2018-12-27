@@ -20,7 +20,7 @@ $urlToCreate = url("user/create");
 
 <?php if (!$items) : ?>
     <p>Det finns inga användare att visa.</p>
-<?php
+    <?php
     return;
 endif;
 ?>

@@ -10,11 +10,6 @@ use Mahw17\User\HTMLForm\UpdateUserForm;
 use Mahw17\Question\Question;
 use Mahw17\Answer\Answer;
 
-
-// use Anax\Route\Exception\ForbiddenException;
-// use Anax\Route\Exception\NotFoundException;
-// use Anax\Route\Exception\InternalErrorException;
-
 /**
  * A sample controller to show how a controller class can be implemented.
  */
@@ -186,13 +181,10 @@ class UserController implements ContainerInjectableInterface
         // Load framework services
         $session    = $this->di->get("session");
         $page       = $this->di->get("page");
-        $response   = $this->di->get("response");
-
 
         // Verify $id is the same as sessionId
         $user = new User();
-        if(!$user->verifyUser($id, $session->get("user"))) {
-            // $response->redirect("");
+        if (!$user->verifyUser($id, $session->get("user"))) {
             $page->add("anax/v2/article/default", [
                 "content" => "Ajabaja! Du kan bara uppdatera ditt egna konto! Försök inte!",
             ]);

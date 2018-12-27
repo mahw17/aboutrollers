@@ -73,7 +73,7 @@ class CreateCommentForm extends FormModel
 
         $filter = new TextFilter();
 
-        $comment->body = $filter->doFilter($this->form->value("body"),"markdown");
+        $comment->body = $filter->doFilter($this->form->value("body"), "markdown");
         $comment->source = $this->form->value("source");
         $comment->sourceid = $this->form->value("sourceid");
         $comment->userid = $this->form->value("userid");
@@ -97,5 +97,4 @@ class CreateCommentForm extends FormModel
     {
         $this->di->get("response")->redirect("question")->send();
     }
-
 }

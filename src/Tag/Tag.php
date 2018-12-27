@@ -2,7 +2,6 @@
 
 namespace Mahw17\Tag;
 
-
 use Anax\DatabaseActiveRecord\ActiveRecordModel;
 
 /**
@@ -54,7 +53,7 @@ class Tag extends ActiveRecordModel
         $tags = preg_split("/[\s,;]+/", $tags);
 
         // Convert array to string and return
-        return implode(";",$tags);
+        return implode(";", $tags);
     }
 
 

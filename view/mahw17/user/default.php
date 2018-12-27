@@ -35,7 +35,7 @@ namespace Anax\View;
               <div class="widget">
                 <h4 class="rheading">Frågor<span></span></h4>
                 <ul class="recent-posts">
-                    <?php foreach ($questions as $question): ?>
+                    <?php foreach ($questions as $question) : ?>
                         <li><a href="<?= url("question/view/{$question->id}"); ?>"><?= $question->title ?></a></li>
                     <?php endforeach; ?>
                 </ul>
@@ -49,7 +49,7 @@ namespace Anax\View;
               <div class="widget">
                 <h4 class="rheading">Svar<span></span></h4>
                 <ul class="recent-posts">
-                    <?php foreach ($answers as $answer): ?>
+                    <?php foreach ($answers as $answer) : ?>
                         <li><a href="<?= url("question/view/{$answer->questionid}"); ?>"><?= $answer->title ?></a></li>
                     <?php endforeach; ?>
                 </ul>

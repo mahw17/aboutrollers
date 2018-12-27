@@ -4,13 +4,6 @@ namespace Mahw17\Tag;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
-// use Mahw17\User\HTMLForm\UserLoginForm;
-// use Mahw17\User\HTMLForm\CreateUserForm;
-// use Mahw17\User\HTMLForm\UpdateUserForm;
-
-// use Anax\Route\Exception\ForbiddenException;
-// use Anax\Route\Exception\NotFoundException;
-// use Anax\Route\Exception\InternalErrorException;
 
 /**
  * A sample controller to show how a controller class can be implemented.
@@ -48,7 +41,6 @@ class TagController implements ContainerInjectableInterface
     {
         // Load framework services
         $page = $this->di->get("page");
-        $db = $this->di->get("dbqb");
 
         // Collect data
         $tag = new Tag();

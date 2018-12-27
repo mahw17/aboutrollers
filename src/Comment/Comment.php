@@ -2,7 +2,6 @@
 
 namespace Mahw17\Comment;
 
-
 use Anax\DatabaseActiveRecord\ActiveRecordModel;
 
 /**
@@ -40,11 +39,10 @@ class Comment extends ActiveRecordModel
                         ->from("Comment")
                         ->join("User", "Comment.userid = User.id")
                         ->where("Comment.source = '{$source}' AND Comment.sourceid = {$sourceid}")
-                        ->orderBy("Comment.created DESC")
+                        ->orderBy("Comment.created ASC")
                         ->execute()
                         ->fetchAll();
 
         return $res;
     }
-
 }

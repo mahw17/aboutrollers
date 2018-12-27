@@ -22,7 +22,7 @@ $urlToCreate = url("question/create");
 
 <?php if (!$items) : ?>
     <p>Det finns inga frågor att visa.</p>
-<?php
+    <?php
     return;
 endif;
 ?>

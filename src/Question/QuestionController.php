@@ -162,6 +162,4 @@ class QuestionController implements ContainerInjectableInterface
 
         return $page->render($data);
     }
-
-
 }

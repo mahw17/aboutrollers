@@ -76,17 +76,9 @@ class UserLoginForm extends FormModel
         }
 
         // If login success
-        // Load framework services
-        // $session = $this->di->get("session");
-
-        // Set active user in session param user
-        // $user->find("acronym", $acronym);
-        // $session->set("user", $user);
         $this->di->get('session')->set("user", $user->id);
-        // $session->set("user", $acronym);
-
         $this->form->addOutput("Användare " . $user->acronym . " är nu inloggad.");
-        return true;
 
+        return true;
     }
 }

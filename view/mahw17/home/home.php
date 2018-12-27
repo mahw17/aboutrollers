@@ -25,7 +25,7 @@ namespace Anax\View;
                       <div class="widget">
                         <h4 class="rheading">Senaste frågorna<span></span></h4>
                         <ul class="recent-posts">
-                            <?php foreach ($questions as $question): ?>
+                            <?php foreach ($questions as $question) : ?>
                                 <li>
                                     <a href="<?= url("question/view/{$question->id}"); ?>"><?= $question->body ?></a>
                                     <div class="clear"></div>
@@ -42,7 +42,7 @@ namespace Anax\View;
                       <div class="widget">
                         <h4 class="rheading">Populäraste taggarna<span></span></h4>
                         <ul class="recent-posts">
-                            <?php foreach ($tags as $tag): ?>
+                            <?php foreach ($tags as $tag) : ?>
                                 <li>
                                     <a href="<?= url("tag") ?>" class="btn btn-theme"><?= $tag->Tag ?> (<?= $tag->Qty ?>)</a>
                                 </li>
@@ -57,7 +57,7 @@ namespace Anax\View;
                       <div class="widget">
                         <h4 class="rheading">Aktivaste användare<span></span></h4>
                         <ul class="recent-posts">
-                            <?php foreach ($users as $user): ?>
+                            <?php foreach ($users as $user) : ?>
                                 <li>
                                     <a href="<?= url("user/view/{$user->id}"); ?>"><?= $user->acronym ?></a>
                                     <div class="clear"></div>

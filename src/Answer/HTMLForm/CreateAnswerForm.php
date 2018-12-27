@@ -9,7 +9,6 @@ use Mahw17\Answer\Answer;
 use Mahw17\Question\Question;
 use Mahw17\User\User;
 
-
 /**
  * Example of FormModel implementation.
  */
@@ -84,7 +83,7 @@ class CreateAnswerForm extends FormModel
         $filter = new TextFilter();
 
         $answer->title  = $this->form->value("title");
-        $answer->body = $filter->doFilter($this->form->value("body"),"markdown");
+        $answer->body = $filter->doFilter($this->form->value("body"), "markdown");
         $answer->questionid = $this->form->value("questionid");
         $answer->userid = $this->form->value("userid");
         $answer->save();
@@ -108,6 +107,4 @@ class CreateAnswerForm extends FormModel
     {
         $this->di->get("response")->redirect("question")->send();
     }
-
-
 }

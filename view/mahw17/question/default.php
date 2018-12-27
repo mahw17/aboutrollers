@@ -28,7 +28,7 @@ $urlToTags = url("tag");
             <div class="panel-body">
                 <h2 class="question"><?= $question->qBody ?></h2>
                 <!-- Comments -->
-                <?php foreach ($qComments as $comment): ?>
+                <?php foreach ($qComments as $comment) : ?>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="questionTitle"><h4><?= $comment->qCommentBody ?></h4></div>
@@ -45,7 +45,7 @@ $urlToTags = url("tag");
                 <?php endif; ?>
             </div>
             <div class="panel-footer">
-                <?php foreach (explode(";",$question->qTags) as $tag): ?>
+                <?php foreach (explode(";", $question->qTags) as $tag) : ?>
                     <a href="<?= $urlToTags ?>" class="btn btn-theme"><i class="icon-tag"> <?= $tag ?></i></a>
                 <?php endforeach; ?>
                 <?php if ($user) : ?>
@@ -59,8 +59,7 @@ $urlToTags = url("tag");
 
 
 <!-- Answer section -->
-<?php foreach ($answers as $answer): ?>
-
+<?php foreach ($answers as $answer) : ?>
 <div class="row">
     <div class="span12">
 
@@ -78,7 +77,7 @@ $urlToTags = url("tag");
                 <h3 class="question"><?= $answer->aBody ?></h3>
 
                 <!-- Comments -->
-                <?php foreach ($answer->aComments as $comment): ?>
+                <?php foreach ($answer->aComments as $comment) : ?>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="questionTitle"><h4><?= $comment->qCommentBody ?></h4></div>

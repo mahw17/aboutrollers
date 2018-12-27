@@ -2,7 +2,6 @@
 
 namespace Mahw17\Answer;
 
-
 use Anax\DatabaseActiveRecord\ActiveRecordModel;
 use Mahw17\Comment\Comment;
 

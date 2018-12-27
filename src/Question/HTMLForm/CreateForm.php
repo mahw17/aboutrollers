@@ -76,7 +76,7 @@ class CreateForm extends FormModel
         $filter = new TextFilter();
 
         $question->title  = $this->form->value("title");
-        $question->body = $filter->doFilter($this->form->value("body"),"markdown");
+        $question->body = $filter->doFilter($this->form->value("body"), "markdown");
         $question->userid = $this->form->value("userid");
 
         // Tag handler
@@ -85,7 +85,7 @@ class CreateForm extends FormModel
 
         $question->save();
 
-        foreach (explode(";",$question->tags) as $newTag) {
+        foreach (explode(";", $question->tags) as $newTag) {
             $tag = new Tag();
             $tag->setDb($this->di->get("dbqb"));
             $tag->tag  = $newTag;
