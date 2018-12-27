@@ -16,7 +16,7 @@ INSERT INTO `Question` VALUES (1,'Hur mycket v&auml;ger en v&auml;lt?','<p>Hur m
 -- Dumping data for table `Answer`
 --
 
-INSERT INTO `Answer` VALUES (1,'SV: Varianter av v&amp;auml;ltar?','<p>Man brukar tala om tv&aring; olika typer. Dels jordpackningsv&auml;ltarna med en stor vals och en traktorbakram samt asfaltsv&auml;ltar med tv&aring; valsar.</p>\n',2,3,'2018-12-26 06:04:10',0),(2,'SV: Kostnad','<p>Det beror ju ju delvis i vilken del av v&auml;rlden du handlar men cirka 80.000 SEK f&ouml;r den minsta v&auml;lten CC800 och en fullutrustad CC6200 kan nog g&aring; p&aring; cirka 1.500.000SEK.</p>\n',4,3,'2018-12-26 06:06:01',0);
+INSERT INTO `Answer` VALUES (1,'SV: Varianter av v&auml;ltar?','<p>Man brukar tala om tv&aring; olika typer. Dels jordpackningsv&auml;ltarna med en stor vals och en traktorbakram samt asfaltsv&auml;ltar med tv&aring; valsar.</p>\n',2,3,'2018-12-26 06:04:10',0),(2,'SV: Kostnad','<p>Det beror ju ju delvis i vilken del av v&auml;rlden du handlar men cirka 80.000 SEK f&ouml;r den minsta v&auml;lten CC800 och en fullutrustad CC6200 kan nog g&aring; p&aring; cirka 1.500.000SEK.</p>\n',4,3,'2018-12-26 06:06:01',0);
 
 
 --
