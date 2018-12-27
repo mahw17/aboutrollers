@@ -12,7 +12,9 @@ $items = isset($items) ? $items : null;
 // Create urls for navigation
 $urlToCreate = url("question/create");
 
-?><h1>Frågor</h1>
+?>
+
+<h1>Frågor</h1>
 
 <?php if ($user) : ?>
 <p>

@@ -27,7 +27,7 @@ class Comment extends ActiveRecordModel
     public $userid;
 
     /**
-     * Get details on item to load form with.
+     * Join tables user and comments
      *
      *
      * @return array

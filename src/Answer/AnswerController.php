@@ -7,7 +7,7 @@ use Anax\Commons\ContainerInjectableTrait;
 use Mahw17\Answer\HTMLForm\CreateAnswerForm;
 
 /**
- * A sample controller to show how a controller class can be implemented.
+ * A sample controller for handlingthe answer create route.
  */
 class AnswerController implements ContainerInjectableInterface
 {

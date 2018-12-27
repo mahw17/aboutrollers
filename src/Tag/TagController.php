@@ -6,7 +6,7 @@ use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 
 /**
- * A sample controller to show how a controller class can be implemented.
+ * A controller for the Tag routes
  */
 class TagController implements ContainerInjectableInterface
 {

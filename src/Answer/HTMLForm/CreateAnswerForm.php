@@ -10,7 +10,7 @@ use Mahw17\Question\Question;
 use Mahw17\User\User;
 
 /**
- * Example of FormModel implementation.
+ * Create question answer form.
  */
 class CreateAnswerForm extends FormModel
 {
@@ -31,7 +31,6 @@ class CreateAnswerForm extends FormModel
         $this->form->create(
             [
                 "id" => __CLASS__,
-                // "legend" => "Details of the item",
             ],
             [
                 "title" => [
@@ -94,8 +93,6 @@ class CreateAnswerForm extends FormModel
         $user->updateRank($answer->userid, 3);
 
         return true;
-
-        // $this->form->addOutput("Svaret är registrerat.");
     }
 
     /**

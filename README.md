@@ -1,4 +1,4 @@
-Weather
+All About Rollers
 ==================================
 [![Build Status](https://travis-ci.com/mahw17/aboutrollers.svg?branch=master)](https://travis-ci.com/mahw17/aboutrollers)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mahw17/aboutrollers/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mahw17/aboutrollers/?branch=master)
@@ -6,45 +6,29 @@ Weather
 [![Build Status](https://scrutinizer-ci.com/g/mahw17/aboutrollers/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mahw17/aboutrollers/build-status/master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/mahw17/aboutrollers/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
-Table of content
-------------------------------------
-
-* [Install as Anax module](#Install-as-Anax-module)
-* [Install using scaffold postprocessing file](#Install-using-scaffold-postprocessing-file)
-* [Install and setup Anax](#Install-and-setup-Anax)
-* [Dependency](#Dependency)
-* [License](#License)
-
-
-Install All about Rollers!
+Install All About Rollers!
 ------------------------------------
 
 This is how you create your own fresh installation.
 
-Install using github
+## Install using github
 
 ```
 git clone https://github.com/mahw17/aboutrollers.git
 ```
 
-Composer update
+## Composer update
 
 ```
 composer update
 ```
-Create and configure database.
 
-```
-rsync -av vendor/mahw17/weather/view ./
-```
+## Create and configure database.
 
+Create a new database and configurate the database connection. Copy config/database_sample.php and updated it according
+to you own specification and save it as database.php in the same folder.
 
-
-License
-------------------
-
-This software carries a MIT license. See [LICENSE.txt](LICENSE.txt) for details.
-
+Execute the sql/setup.sql => sql/ddl/tables_ddl.sql => sql/dml/tables_insert.sql for creating the database content.
 
 
 ```

@@ -28,7 +28,7 @@ class Question extends ActiveRecordModel
     public $userid;
 
     /**
-     * Get details on item to load form with.
+     * Get latest questions
      *
      *
      * @return array

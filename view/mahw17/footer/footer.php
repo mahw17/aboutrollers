@@ -13,21 +13,16 @@ namespace Anax\View;
   <div class="row">
       <div class="span4">
         <div class="widget">
-          <h5>Hitta mig på</h5>
+          <h5>Hitta oss på</h5>
           <address>
-            <i class="icon-home"></i> <strong>Marcus Holmersson</strong><br>
-            Hasselvägen 3<br>
-            373 72 Jämjö, Sweden
+            <i class="icon-home"></i> <strong>Allt Om Vältar</strong><br>
+            Vältvägen 3<br>
+            373 00 Vältra, Sweden
             </address>
-          <p>
-            <i class="icon-phone"></i> (+46) 709 - 701 633<br>
-            <i class="icon-envelope-alt"></i> mahw17@student.bth.se
-          </p>
         </div>
         <div class="widget">
           <ul class="social">
-            <li><a href="https://www.facebook.com/marcus.holmersson?ref=bookmarks" data-placement="bottom" title="Facebook"><i class="icon-facebook icon-square icon-32"></i></a></li>
-            <li><a href="https://github.com/mahw17/ramverk1" data-placement="bottom" title="Github"><i class="icon-github icon-square icon-32"></i></a></li>
+            <li><a href="https://github.com/mahw17/aboutrollers" data-placement="bottom" title="Github"><i class="icon-github icon-square icon-32"></i></a></li>
           </ul>
         </div>
       </div>

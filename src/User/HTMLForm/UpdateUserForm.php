@@ -7,7 +7,7 @@ use Psr\Container\ContainerInterface;
 use Mahw17\User\User;
 
 /**
- * Example of FormModel implementation.
+ * Form for updating existing user
  */
 class UpdateUserForm extends FormModel
 {
@@ -23,7 +23,6 @@ class UpdateUserForm extends FormModel
         $this->form->create(
             [
                 "id" => __CLASS__,
-                // "legend" => "Uppdatera konto",
             ],
             [
                 "id" => [

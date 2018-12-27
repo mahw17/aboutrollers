@@ -10,7 +10,7 @@ use Mahw17\Tag\Tag;
 use Mahw17\User\User;
 
 /**
- * Form to create an item.
+ * Form to create a new question.
  */
 class CreateForm extends FormModel
 {
@@ -25,7 +25,6 @@ class CreateForm extends FormModel
         $this->form->create(
             [
                 "id" => __CLASS__,
-                // "legend" => "Details of the item",
             ],
             [
                 "title" => [
@@ -46,7 +45,6 @@ class CreateForm extends FormModel
                 ],
 
                 "userid" => [
-                    // "label" => "Frågan",
                     "type" => "hidden",
                     "value" => $userid,
                 ],

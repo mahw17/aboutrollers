@@ -6,9 +6,6 @@ namespace Anax\View;
  * A layout rendering views in defined regions.
  */
 
-// Show incoming variables and view helper functions
-//echo showEnvironment(get_defined_vars(), get_defined_functions());
-
 ?><!doctype html>
 <html>
 <head>

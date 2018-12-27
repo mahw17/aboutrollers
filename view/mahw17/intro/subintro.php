@@ -10,8 +10,6 @@ $intro_path = isset($intro_path) ? $intro_path : $this->di->get("session")->get(
 
 ?>
 
-
-
 <!-- Subintro
 ================================================== -->
       <div class="span8">

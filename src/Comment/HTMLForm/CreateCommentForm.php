@@ -9,7 +9,7 @@ use Mahw17\Comment\Comment;
 use Mahw17\User\User;
 
 /**
- * Example of FormModel implementation.
+ * Create a from for entering new comments
  */
 class CreateCommentForm extends FormModel
 {
@@ -25,7 +25,6 @@ class CreateCommentForm extends FormModel
         $this->form->create(
             [
                 "id" => __CLASS__,
-                // "legend" => "Details of the item",
             ],
             [
                 "body" => [
@@ -85,7 +84,6 @@ class CreateCommentForm extends FormModel
         $user->updateRank($comment->userid, 1);
 
         return true;
-        // $this->form->addOutput("Kommentaren är registrerat.");
     }
 
     /**

@@ -11,7 +11,7 @@ use Mahw17\Question\Question;
 use Mahw17\Answer\Answer;
 
 /**
- * A sample controller to show how a controller class can be implemented.
+ * A controller for the user routes
  */
 class UserController implements ContainerInjectableInterface
 {
@@ -35,7 +35,7 @@ class UserController implements ContainerInjectableInterface
 
 
     /**
-     * Description.
+     * Show all users
      *
      *
      * @throws Exception
@@ -69,7 +69,7 @@ class UserController implements ContainerInjectableInterface
 
 
     /**
-     * Description.
+     * Login user
      *
      * @param datatype $variable Description
      *
@@ -109,7 +109,7 @@ class UserController implements ContainerInjectableInterface
 
 
     /**
-     * Description.
+     * Create new user
      *
      * @param datatype $variable Description
      *
@@ -214,9 +214,9 @@ class UserController implements ContainerInjectableInterface
     }
 
     /**
-     * View specific question
+     * View specific user
      *
-     * @param int $id the question id to view.
+     * @param int $id the user id to view.
      *
      * @return object as a response object
      */
@@ -236,7 +236,6 @@ class UserController implements ContainerInjectableInterface
 
         $answer = new Answer();
         $answer->setDb($dbqb);
-        // $answer->findWhere("userid", $id);
 
         $data = [
             "title"         => "Frågor",

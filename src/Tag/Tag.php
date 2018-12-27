@@ -24,25 +24,9 @@ class Tag extends ActiveRecordModel
     public $tag;
     public $questionid;
 
-    /**
-     * Verify the acronym and the password, if successful the object contains
-     * all details from the database row.
-     *
-     * @param string $acronym  acronym to check.
-     * @param string $password the password to use.
-     *
-     * @return boolean true if acronym and password matches, else false.
-     */
-    public function verifyPassword($acronym, $password)
-    {
-        $this->find("tag", $acronym);
-        return password_verify($password, $this->password);
-    }
 
     /**
-     * Callback what to do if the form was successfully submitted, this
-     * happen when the submit callback method returns true. This method
-     * can/should be implemented by the subclass for a different behaviour.
+     * Modify input tag-string to a standard setup
      */
     public function tagHandler($tags)
     {
@@ -59,7 +43,7 @@ class Tag extends ActiveRecordModel
 
 
     /**
-     * Get details on item to load form with.
+     * Join tables Tag and Question
      *
      *
      * @return array

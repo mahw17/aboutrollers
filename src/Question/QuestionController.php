@@ -11,12 +11,8 @@ use Mahw17\Question\HTMLForm\UpdateForm;
 use Mahw17\Answer\Answer;
 use Mahw17\Comment\Comment;
 
-// use Anax\Route\Exception\ForbiddenException;
-// use Anax\Route\Exception\NotFoundException;
-// use Anax\Route\Exception\InternalErrorException;
-
 /**
- * A sample controller to show how a controller class can be implemented.
+ * A sample controller to control question routes
  */
 class QuestionController implements ContainerInjectableInterface
 {

@@ -8,12 +8,6 @@ namespace Anax\View;
 
 ?>
 
-<!-- <div class="row">
-  <div class="span12">
-    <h2>Om Allt om vältar</h2>
-  </div>
-</div> -->
-
 <!-- Question section -->
 <div class="row">
 

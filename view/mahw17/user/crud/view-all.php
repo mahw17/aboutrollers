@@ -3,11 +3,8 @@
 namespace Anax\View;
 
 /**
- * View to display all books.
+ * View to display all users.
  */
-// Show all incoming variables/functions
-//var_dump(get_defined_functions());
-//echo showEnvironment(get_defined_vars());
 
 // Gather incoming variables and use default values if not set
 $items = isset($items) ? $items : null;
@@ -15,8 +12,9 @@ $items = isset($items) ? $items : null;
 // Create urls for navigation
 $urlToCreate = url("user/create");
 
+?>
 
-?><h1>Användare</h1>
+<h1>Användare</h1>
 
 <?php if (!$items) : ?>
     <p>Det finns inga användare att visa.</p>

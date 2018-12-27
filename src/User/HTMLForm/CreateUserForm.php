@@ -7,7 +7,7 @@ use Psr\Container\ContainerInterface;
 use Mahw17\User\User;
 
 /**
- * Example of FormModel implementation.
+ * Create a new user form
  */
 class CreateUserForm extends FormModel
 {

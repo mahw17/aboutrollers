@@ -7,7 +7,7 @@ use Psr\Container\ContainerInterface;
 use Mahw17\User\User;
 
 /**
- * Example of FormModel implementation.
+ * User login form
  */
 class UserLoginForm extends FormModel
 {
@@ -29,15 +29,11 @@ class UserLoginForm extends FormModel
                 "user" => [
                     "label"         => "Namn",
                     "type"        => "text",
-                    //"description" => "Here you can place a description.",
-                    //"placeholder" => "Here is a placeholder",
                 ],
 
                 "password" => [
                     "label"         => "Lösenord",
                     "type"        => "password",
-                    //"description" => "Here you can place a description.",
-                    //"placeholder" => "Here is a placeholder",
                 ],
 
                 "submit" => [

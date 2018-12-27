@@ -6,9 +6,6 @@ namespace Anax\View;
  * Template file to render a view.
  */
 
-// Show incoming variables and view helper functions
-//echo showEnvironment(get_defined_vars(), get_defined_functions());
-
 ?>
 
 
@@ -29,8 +26,7 @@ namespace Anax\View;
                 </div>
                 <div id="collapseOne" class="accordion-body collapse in">
                   <div class="accordion-inner">
-                      Denna webbplats använder sig utav ramverket Anax. Initital bygger vi upp webbplatsen med enskilda
-                      Anax-moduler och ska så småningom få ihop ett fullskalligt ramverk.
+                      Denna webbplats använder sig utav ramverket Anax.
                       Anax finns dokumenterat på <a href="https://github.com/mosbth/anax">GitHub</a> och används i flertalet
                       kurser inom BTH:s webbprogrammeringsutbildning <a href="https://dbwebb.se/">dbwebb</a>.
                       Mikael Roos (lärare på BTH) är den som ursprungligen har byggt Anax och ligger nu som öppen källkod.
@@ -51,17 +47,11 @@ namespace Anax\View;
                       Här kommer lite kort information om mig, Marcus Holmersson. Jag föddes i slutet av 70-talet i ett litet samhälle strax utanför Kalmar.
 
                         Efter gymnasiestudier och militärtjänstgörning läste jag till civilingenjör i Maskinteknik och tog examen från Linköpings Universitet 2005.
-                        Jag var redan på den tiden intresserad av programmering men då var det mest CNC- och PLC-programmering som gällde.
-                        Sedan dess har det tyvärr inte blivit så mycket programmering för egen del.
-                        Nu förtiden är det bara lite Visual Basic programmering för att utöka funktionaliteten i Excel.
 
                         Jag har de senaste 13 åren jobbat med produktionsteknik i alla dess former såsom projektledare,
                         beredningsarbete, tillverkningsanalyser etc. och märker i mitt arbete ett ökat behov av att kunna mer programmering,
                         dels för att bli en bättre beställare av denna typ av tjänster men även för att kunna göra en del mindre applikationer själv.
                         Det är av dessa anledningar jag har hoppat på utbildningen i Webbprogrammering!
-
-                        Nu när jag är inne på år två i utbildningen känner jag att det var rätt beslut att hoppa på denna utbildning.
-                        Har redan lärt mig mycket som jag har haft stor nytta av i min yrkesroll.
                   </div>
                 </div>
               </div>
@@ -72,7 +62,7 @@ namespace Anax\View;
                 </div>
                 <div id="collapseThree" class="accordion-body collapse">
                   <div class="accordion-inner">
-                      Mitt, Marcus Holmersson, kursrepo på GitHub finns via denna <a href="https://github.com/mahw17/ramverk1">länk</a>.
+                      Detta avslutande kursmoment i kursen Ramverk1 har ett eget repo <a href="https://github.com/mahw17/aboutrollers">länk</a>.
                   </div>
                 </div>
               </div>

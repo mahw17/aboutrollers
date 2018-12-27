@@ -7,7 +7,7 @@ use Anax\Commons\ContainerInjectableTrait;
 use Mahw17\Comment\HTMLForm\CreateCommentForm;
 
 /**
- * A sample controller to show how a controller class can be implemented.
+ * A controller to handle the route for creating new comments
  */
 class CommentController implements ContainerInjectableInterface
 {
